@@ -139,6 +139,7 @@ public class MessageActivity extends AppCompatActivity {
 
          final DatabaseReference chatRef=FirebaseDatabase.getInstance()
                  .getReference("ChatList")
+                 .child(fuser.getUid())
                  .child(userid);
          chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
