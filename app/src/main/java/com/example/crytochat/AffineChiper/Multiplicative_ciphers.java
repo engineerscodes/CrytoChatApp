@@ -27,7 +27,14 @@ public class Multiplicative_ciphers
 
 		for(int i=0;i<ch.length;i++)
 		{
-			if(map.get(ch[i])==32)
+
+			if(!map.containsKey(ch[i]))
+			{
+				output+=ch[i];
+			}
+
+
+			else if(map.get(ch[i])==32)
 			{     output+=" ";
 			}
 			else if(map.containsKey(ch[i]))
@@ -58,7 +65,12 @@ public class Multiplicative_ciphers
 		String output2="";
 		for(int i=0;i<ch.length;i++)
 		{
-			if(map.get(ch[i])==32)
+			if(!map.containsKey(ch[i]))
+			{
+				output2+=ch[i];
+			}
+
+			else if(map.get(ch[i])==32)
 			{     output2+=" ";
 			}
 			else	if(map.containsKey(ch[i]))

@@ -42,7 +42,13 @@ public class Additve_Cipher
 
 		for(int i=0;i<ch.length;i++)
 		{
-			if(map.get(ch[i])==32)
+			if(!map.containsKey(ch[i]))
+			{
+				output+=ch[i];
+			}
+
+
+			else if(map.get(ch[i])==32)
 			{     output+=" ";
 			}
 			else if(map.containsKey(ch[i]))
@@ -61,23 +67,29 @@ public class Additve_Cipher
 		char ch[]=output.toCharArray();
 		String output2="";
 		for(int i=0;i<ch.length;i++)
-		{     if(map.get(ch[i])==32)
-		{     output2+=" ";
-		}
+		{
 
-		else if(map.containsKey(ch[i]))
-		{	int temp=map.get(ch[i]);
-			int sum=((temp-key)%26);
-			if(sum<0)
+			if(!map.containsKey(ch[i]))
 			{
-				//for negative number mod
-				// -15 mod26 =15 in java but its 11 to fix it u have to add 25+(-15)=11
-				sum=26+sum;
+				output2+=ch[i];
 			}
-			sum=sum+65;
-			//  System.out.println(sum);
-			output2+=((char)sum);
-		}
+
+			else if(map.get(ch[i])==32)
+			{     output2+=" "; }
+
+			else if(map.containsKey(ch[i]))
+			{	int temp=map.get(ch[i]);
+				int sum=((temp-key)%26);
+				if(sum<0)
+				{
+					//for negative number mod
+					// -15 mod26 =15 in java but its 11 to fix it u have to add 25+(-15)=11
+					sum=26+sum;
+				}
+				sum=sum+65;
+				//  System.out.println(sum);
+				output2+=((char)sum);
+			}
 		}
 		//System.out.println(output2);
 		return output2;
