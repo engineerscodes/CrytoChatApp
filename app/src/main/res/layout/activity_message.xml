@@ -36,11 +36,17 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+     <androidx.appcompat.widget.AppCompatSpinner
+         android:layout_width="match_parent"
+         android:layout_height="50dp"
+         android:id="@+id/spinner"
+         />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="588dp" />
+        android:layout_height="524dp" />
 
     <RelativeLayout
         android:id="@+id/bottom"
@@ -62,10 +68,10 @@
 
         <EditText
             android:id="@+id/send_text"
-            android:layout_width="323dp"
+            android:layout_width="327dp"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
             android:layout_toStartOf="@+id/imageButton"
             android:ems="10"
