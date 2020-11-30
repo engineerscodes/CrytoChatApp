@@ -1,4 +1,7 @@
-
+/*
+Author: Jayan Praveen
+Title: Feistel Cipher
+*/
 import java.util.*;
 
 class encrypt
@@ -34,7 +37,7 @@ class decrypt
                 left.set(i, left.get(i) ^ (Function.function(right.get(i), KEY, r)));
             }
         }
-
+        System.out.print("Ouput: ");
         for (int i : left) 
             System.out.print((char) i);
 
@@ -62,7 +65,8 @@ public class FeistelCipher
         List<Integer> right = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
 
-        long KEY = 12;
+        // Change the KEY value
+        final long KEY = 12;
         System.out.println(KEY);
 
         String str = in.nextLine();
