@@ -1,5 +1,6 @@
 package com.example.crytochat;
 
+import com.example.crytochat.AffineChiper.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -129,7 +130,9 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     public  void SendMessage(String uid, final String userid, String msg)
-    {
+    {   System.out.println("------------------------------>"+msg);
+        Affine_Ciphers ac=new Affine_Ciphers();
+        msg=ac.encryption(msg);
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("sender",uid);
@@ -173,8 +176,10 @@ public class MessageActivity extends AppCompatActivity {
                 Chat chat=snapshot.getValue(Chat.class);
                 if(chat.getReceiver().equals(myid) && chat.getSender().equals(userid)||
                         chat.getReceiver().equals(userid) && chat.getSender().equals(myid))
-                {   //System.out.println(chat.getMessage());
-                    // chat.setMessage("Guuu");
+                {   String input=chat.getMessage();
+                    Affine_Ciphers ac=new Affine_Ciphers();
+                    input=ac.decode(input);
+                    chat.setMessage(input);
                     mchat.add(chat); }
               }
               messageAdapter=new MessageAdapter(MessageActivity.this,mchat,imageurl);
