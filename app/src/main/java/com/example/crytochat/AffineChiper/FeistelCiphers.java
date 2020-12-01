@@ -2,11 +2,9 @@ package com.example.crytochat.AffineChiper;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- *  @author M.NAVEEN
- *  RANDOM CODER'S
- *  Tech/Project Lead Android Club
+ *  @Author: Jayan Praveen
+ *  RANDOM CODERS
  */
 public class FeistelCiphers {
 
