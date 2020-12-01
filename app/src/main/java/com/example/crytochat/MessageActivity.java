@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MessageActivity extends AppCompatActivity {
-
+    static int ch=0;
     TextView username;
     ImageView imageView;
     RecyclerView recyclerViewy; //==recyclerViewy
@@ -78,9 +78,10 @@ public class MessageActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {   ch=position;
                 String selected=parent.getItemAtPosition(position).toString();
-                Toast.makeText(MessageActivity.this,selected,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MessageActivity.this,selected+"pos :"+position,Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -160,14 +161,35 @@ public class MessageActivity extends AppCompatActivity {
 
     public  void SendMessage(String uid, final String userid, String msg)
     {   System.out.println("------------------------------>"+msg);
-        Affine_Ciphers ac=new Affine_Ciphers();
-        msg=ac.encryption(msg);
+       if(ch==0)
+       {  Affine_Ciphers ac=new Affine_Ciphers();
+        msg=ac.encryption(msg+"0");
+           DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+           HashMap<String,Object> hashMap=new HashMap<>();
+           hashMap.put("sender",uid);
+           hashMap.put("receiver",userid);
+           hashMap.put("message",msg);
+           reference.child("Chats").push().setValue(hashMap);
+
+       }
+
+       else if(ch==1)
+       {
+           FeistelCiphers fc=new FeistelCiphers();
+           msg=fc.encrypt(msg);
+           DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+           HashMap<String,Object> hashMap=new HashMap<>();
+           hashMap.put("sender",uid);
+           hashMap.put("receiver",userid);
+           hashMap.put("message",msg+"%");
+           reference.child("Chats").push().setValue(hashMap);
+       } /*
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("sender",uid);
         hashMap.put("receiver",userid);
-        hashMap.put("message",msg);
-         reference.child("Chats").push().setValue(hashMap);
+        hashMap.put("message",msg+0);
+         reference.child("Chats").push().setValue(hashMap);*/
 
          final DatabaseReference chatRef=FirebaseDatabase.getInstance()
                  .getReference("ChatList")
@@ -205,11 +227,32 @@ public class MessageActivity extends AppCompatActivity {
                 Chat chat=snapshot.getValue(Chat.class);
                 if(chat.getReceiver().equals(myid) && chat.getSender().equals(userid)||
                         chat.getReceiver().equals(userid) && chat.getSender().equals(myid))
-                {   String input=chat.getMessage();
-                    Affine_Ciphers ac=new Affine_Ciphers();
-                    input=ac.decode(input);
-                    chat.setMessage(input);
-                    mchat.add(chat); }
+                  {   String input=chat.getMessage();
+                    String temp[]=input.split("");
+                    input="";
+                    String input2="";
+                    for(int i=0;i<temp.length-1;i++)
+                    { input+=temp[i];
+                      input2+=temp[i];
+                    }
+                      System.out.println("----------encode--->>"+temp[temp.length-1]);
+                    if(temp[temp.length-1].equals("0"))
+                    {  Affine_Ciphers ac=new Affine_Ciphers();
+                        input=ac.decode(input);
+                        chat.setMessage(input);mchat.add(chat);
+                    }
+                    else if(temp[temp.length-1].equals("%"))
+                    {   System.out.println("----------encode--->"+temp[temp.length-1]);
+                       System.out.println("Praveen :"+input2);
+                        FeistelCiphers fc=new FeistelCiphers();
+                        input2=fc.decrypt(input2);
+                        System.out.println("Praveen :"+input2);
+                        chat.setMessage(input2);mchat.add(chat);
+                    }
+
+                    }
+
+
               }
               messageAdapter=new MessageAdapter(MessageActivity.this,mchat,imageurl);
               recyclerView.setAdapter(messageAdapter);
