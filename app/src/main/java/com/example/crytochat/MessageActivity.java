@@ -183,7 +183,22 @@ public class MessageActivity extends AppCompatActivity {
            hashMap.put("receiver",userid);
            hashMap.put("message",msg+"%");
            reference.child("Chats").push().setValue(hashMap);
-       } /*
+       }
+       else if(ch==2)
+       {
+           caesiro c=new caesiro();
+           msg=c.encrypt(msg);
+           DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+           HashMap<String,Object> hashMap=new HashMap<>();
+           hashMap.put("sender",uid);
+           hashMap.put("receiver",userid);
+           hashMap.put("message",msg+"!");
+           reference.child("Chats").push().setValue(hashMap);
+       }
+
+
+
+       /*
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("sender",uid);
@@ -249,6 +264,19 @@ public class MessageActivity extends AppCompatActivity {
                         System.out.println("Praveen :"+input2);
                         chat.setMessage(input2);mchat.add(chat);
                     }
+
+                    else if(temp[temp.length-1].equals("!"))
+                    {   System.out.println("----------encode--->"+temp[temp.length-1]);
+                       // System.out.println("Praveen :"+input2);
+                        caesiro fc=new caesiro();
+                        input2=fc.decrypt(input2);
+                       // System.out.println("Praveen :"+input2);
+                        chat.setMessage(input2);mchat.add(chat);
+                    }
+
+
+
+
 
                     }
 

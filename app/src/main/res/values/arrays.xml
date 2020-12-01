@@ -4,5 +4,6 @@
     <string-array name="Cipher_names">
         <item>Affine Cipher</item>
         <item> Feistel Ciphers </item>
+        <item>Shifting Ciphers</item>
     </string-array>
 </resources>
