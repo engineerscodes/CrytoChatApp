@@ -24,8 +24,8 @@ public class FeistelCiphers {
         // String str = in.nextLine();
 
 
-        String input= encrypt("Hi5585p n4nef");
-        System.out.println(decrypt(input));
+       // String input= encrypt("Hi5585p n4nef");
+       // System.out.println(decrypt(input));
     }
     public   String  encrypt(String str)
     {
@@ -43,7 +43,7 @@ public class FeistelCiphers {
             right.add((int) str.charAt(i));
 
 
-        System.out.println("Entered Text: "+ str);
+      //  System.out.println("Entered Text: "+ str);
 
 
 
