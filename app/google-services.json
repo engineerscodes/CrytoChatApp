@@ -1,1 +1,40 @@
-
+{
+  "project_info": {
+    "project_number": "850586809686",
+    "firebase_url": "https://crytochat-36905.firebaseio.com",
+    "project_id": "crytochat-36905",
+    "storage_bucket": "crytochat-36905.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850586809686:android:64c82b662a4d51ca4d92f7",
+        "android_client_info": {
+          "package_name": "com.example.crytochat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850586809686-b41e2260c47fmckjhkb457gs9rquapv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNAsXl3Mw_wMoNsD7QT_C9MiomKYXytTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850586809686-b41e2260c47fmckjhkb457gs9rquapv0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
