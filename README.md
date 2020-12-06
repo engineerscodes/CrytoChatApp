@@ -6,7 +6,7 @@ link-https://github.com/RandomCodersVision/CrytoChatApp/blob/master/app/build/ou
 # Ciphers used:
 1. Feistel Cipher
 2. Affine Cipher 
-3. Caesar cipher
+3. Shifting cipher
 
 # Do not forget to replace Firebase service key file with Your service key.
 <b>
