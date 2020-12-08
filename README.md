@@ -15,3 +15,8 @@ Link: https://firebase.google.com/docs/admin/setup
 ***
 
 ## Cipher files are found [here.](https://github.com/RandomCodersVision/CrytoChatApp/tree/master/app/src/main/java/com/example/crytochat/AffineChiper)
+
+# Video 
+<br>
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/snI2-9CENwI/0.jpg)](https://www.youtube.com/watch?v=snI2-9CENwI)
