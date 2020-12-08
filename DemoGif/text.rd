@@ -1,1 +1,0 @@
-# Demo Gif Files
