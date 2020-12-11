@@ -8,6 +8,12 @@ link-https://github.com/RandomCodersVision/CrytoChatApp/blob/master/app/build/ou
 2. Affine Cipher 
 3. Shifting cipher
 
+# Contributor can support with more complex algorithm like
+1. RSA
+2. DES
+3. AES
+4. RABIN
+
 # Do not forget to replace Firebase service key file with Your service key.
 <b>
 Link: https://firebase.google.com/docs/admin/setup
